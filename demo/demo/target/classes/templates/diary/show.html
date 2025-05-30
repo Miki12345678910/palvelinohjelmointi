@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${entry.title}">Merkintä</title>
+    <link rel="stylesheet" href="/diary.css" />
+</head>
+<body>
+    <h1 th:text="${entry.title}">Otsikko</h1>
+    <p th:text="${#temporals.format(entry.createdAt, 'dd.MM.yyyy HH:mm')}"></p>
+    <p th:text="${entry.content}">Sisältö</p>
+
+    <a href="/diary" class="button">Takaisin listaan</a>
+    <a th:href="@{'/diary/' + ${entry.id} + '/edit'}" class="edit-button">Muokkaa</a>
+    <form th:action="@{'/diary/' + ${entry.id} + '/delete'}" method="post" style="display:inline;">
+        <button type="submit" class="delete-button">Poista</button>
+    </form>
+</body>
+</html>

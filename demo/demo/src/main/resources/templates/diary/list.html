@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Päiväkirjamerkinnät</title>
+    <link rel="stylesheet" href="/diary.css">
+</head>
+<body>
+    <h1>Päiväkirjamerkinnät</h1>
+
+    <ul>
+        <li th:each="entry : ${entries}">
+            <a th:href="@{'/diary/' + ${entry.id}}" th:text="${entry.title}"></a>
+            <span th:text="${#temporals.format(entry.createdAt, 'dd.MM.yyyy HH:mm')}"></span>
+        </li>
+    </ul>
+
+     <a href="/diary/new" class="button">Lisää uusi merkintä</a>
+
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Muokkaa merkintää</title>
+    <link rel="stylesheet" href="/diary.css">
+</head>
+<body>
+    <h1>Muokkaa merkintää</h1>
+    <form th:action="@{'/diary/' + ${entry.id} + '/edit'}" th:object="${entry}" method="post">
+        <label>Otsikko:</label>
+        <input type="text" th:field="*{title}" /><br/>
+        <label>Sisältö:</label><br/>
+        <textarea th:field="*{content}"></textarea><br/>
+        <button type="submit">Tallenna muutokset</button>
+    </form>
+    <a href="/diary" class="button">Takaisin listaan</a>
+</body>
+</html>
